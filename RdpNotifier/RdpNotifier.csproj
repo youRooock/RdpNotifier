@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Enums\WtsConnectionStateEnum.cs" />
     <Compile Include="Enums\WtsInfoEnum.cs" />
+    <Compile Include="INotifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionInfo.cs" />

@@ -10,11 +10,13 @@ namespace RdpNotifier
     {
         public string Username { get; private set; }
         public string Domain { get; private set; }
+        public string AdditionalData { get; private set; }
 
-        public UserEvent(string user, string domain)
+        public UserEvent(string user, string domain, string add)
         {
             Username = user;
             Domain = domain;
+            AdditionalData = add;
         }
 
     }

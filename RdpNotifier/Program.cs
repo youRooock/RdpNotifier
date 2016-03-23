@@ -12,7 +12,7 @@ namespace RdpNotifier
         static void Main(string[] args)
         {
             var user = new User();
-            user.userEvent += SendRequest;
+            user.userEvent += Notify;
             while (true)
             {
                 user.GetInfo("webintegration.plarium.local");
@@ -21,9 +21,9 @@ namespace RdpNotifier
             }
         }
 
-        static void SendRequest(UserEvent e)
+        static void Notify(UserEvent e)
         {
-            Console.WriteLine(e.Username + " " + e.Domain);
+            Console.WriteLine(string.Format(e.Username + "{0}" + e.Domain + "{0}" + e.AdditionalData, " "));
         }
     }
 }
