@@ -10,6 +10,7 @@ namespace RdpNotifier.Enums
     {
         Danger,
         Warning,
-        Normal 
+        Normal,
+        Good 
     }
 }

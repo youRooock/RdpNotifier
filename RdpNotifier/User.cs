@@ -59,7 +59,7 @@ namespace RdpNotifier
               var domain = Marshal.PtrToStringAnsi(domainPtr);
               _action = " has entered";
 
-              notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Normal));
+              notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Good));
 
               while (true)
               {
