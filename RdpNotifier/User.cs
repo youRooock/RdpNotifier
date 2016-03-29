@@ -11,8 +11,8 @@ namespace RdpNotifier
 {
   public class User
   {
-    public SessionInfo Info { get; private set; }
-    public event Action<UserEvent> userEvent;
+    public event Action<NotificationEvent> notificationEvent;
+    private string _action;
 
     private IntPtr OpenServer(String Name)
     {
@@ -57,8 +57,9 @@ namespace RdpNotifier
             {
               var username = Marshal.PtrToStringAnsi(userPtr);
               var domain = Marshal.PtrToStringAnsi(domainPtr);
+              _action = " has entered";
 
-              userEvent(new UserEvent(domain, username, "has entered"));
+              notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Normal));
 
               while (true)
               {
@@ -68,7 +69,8 @@ namespace RdpNotifier
 
                 if ((WtsConnectionState)status != WtsConnectionState.WTSActive)
                 {
-                  userEvent(new UserEvent(domain, username, " has left"));
+                  _action = " has left";
+                  notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Danger));
                   Wts.WTSFreeMemory(state);
                   break;
                 }

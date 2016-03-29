@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace RdpNotifier
 {
-    public class UserEvent : EventArgs
+    public class NotificationEvent : EventArgs
     {
         public string Username { get; private set; }
         public string Domain { get; private set; }
-        public string AdditionalData { get; private set; }
+        public string Action { get; private set; }
 
-        public UserEvent(string user, string domain, string add)
+        public NotificationEvent(string user, string domain, string action)
         {
             Username = user;
             Domain = domain;
-            AdditionalData = add;
+            Action = action;
         }
 
     }

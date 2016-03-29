@@ -33,7 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,18 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\SlackStatusEnum.cs" />
     <Compile Include="Enums\WtsConnectionStateEnum.cs" />
     <Compile Include="Enums\WtsInfoEnum.cs" />
     <Compile Include="INotifier.cs" />
+    <Compile Include="Models\AttachmentsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestFieldAttribute.cs" />
     <Compile Include="SessionInfo.cs" />
+    <Compile Include="SlackBot.cs" />
+    <Compile Include="Models\SlackMessageModel.cs" />
+    <Compile Include="SlackNotificationEvent.cs" />
+    <Compile Include="SlackNotifier.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserEvent.cs" />
+    <Compile Include="NotificationEvent.cs" />
     <Compile Include="Wts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

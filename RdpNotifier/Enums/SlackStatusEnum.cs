@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RdpNotifier
+namespace RdpNotifier.Enums
 {
-    public interface INotifier
+    public enum SlackStatus
     {
-        void Send(object @event);
+        Danger,
+        Warning,
+        Normal 
     }
 }

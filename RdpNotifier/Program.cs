@@ -4,26 +4,29 @@ using System.Text;
 using System.Runtime.InteropServices;
 using RdpNotifier.Enums;
 using System.Threading;
+using System.Configuration;
 
 namespace RdpNotifier
 {
     class Program
     {
+        private static string _server = ConfigurationManager.AppSettings["server"];
+
         static void Main(string[] args)
         {
+            var bot = new SlackBot(ConfigurationManager.AppSettings["channel"], 
+                ConfigurationManager.AppSettings["botName"], ConfigurationManager.AppSettings["slackBotToken"], 
+                ConfigurationManager.AppSettings["iconUrl"]);
+
+            var notifier = new SlackNotifier(ConfigurationManager.AppSettings["slackApiUrl"], bot);
             var user = new User();
-            user.userEvent += Notify;
+            user.notificationEvent += notifier.Send;
             while (true)
             {
-                user.GetInfo("webintegration.plarium.local");
+                user.GetInfo(_server);
 
                 Thread.Sleep(1000);
             }
-        }
-
-        static void Notify(UserEvent e)
-        {
-            Console.WriteLine(string.Format(e.Username + "{0}" + e.Domain + "{0}" + e.AdditionalData, " "));
         }
     }
 }
