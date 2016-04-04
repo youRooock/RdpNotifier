@@ -59,7 +59,7 @@ namespace RdpNotifier
               var domain = Marshal.PtrToStringAnsi(domainPtr);
               _action = " has entered";
 
-              notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Good));
+              notificationEvent(new SlackNotificationEvent(username, domain, _action, SlackStatus.Good));
 
               while (true)
               {
@@ -70,7 +70,7 @@ namespace RdpNotifier
                 if ((WtsConnectionState)status != WtsConnectionState.WTSActive)
                 {
                   _action = " has left";
-                  notificationEvent(new SlackNotificationEvent(domain, username, _action, SlackStatus.Danger));
+                  notificationEvent(new SlackNotificationEvent(username, domain, _action, SlackStatus.Danger));
                   Wts.WTSFreeMemory(state);
                   break;
                 }

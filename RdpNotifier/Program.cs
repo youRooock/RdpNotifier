@@ -18,7 +18,7 @@ namespace RdpNotifier
                 ConfigurationManager.AppSettings["botName"], ConfigurationManager.AppSettings["slackBotToken"], 
                 ConfigurationManager.AppSettings["iconUrl"]);
 
-            var notifier = new SlackNotifier(ConfigurationManager.AppSettings["slackApiUrl"], bot);
+            INotifier notifier = new SlackNotifier(ConfigurationManager.AppSettings["slackApiUrl"], bot);
             var user = new User();
             user.notificationEvent += notifier.Send;
             while (true)

@@ -8,6 +8,6 @@ namespace RdpNotifier
 {
     public interface INotifier
     {
-        void Send(object @event);
+      void Send(object sentEvent);
     }
 }

@@ -38,7 +38,8 @@ namespace RdpNotifier
                     new AttachmentsModel
                     {
                         Color = notificationEvent.SlackStatus,
-                        Text = notificationEvent.Domain + "\\" + notificationEvent.Username + notificationEvent.Action
+                        Text = notificationEvent.Domain + "\\" + notificationEvent.Username + notificationEvent.Action,
+                        Fallback = notificationEvent.Domain + "\\" + notificationEvent.Username + notificationEvent.Action
                     }
                 }
             };
@@ -47,7 +48,7 @@ namespace RdpNotifier
 
             using (var wb = new WebClient())
             {
-                var response = wb.UploadValues("https://slack.com/api/chat.postMessage", "POST", dictionary);
+              var response = wb.UploadValues(_slackApiUrl, "POST", dictionary);
             }
         }
 
